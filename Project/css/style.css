@@ -1,19 +1,16 @@
-/*
-  Theme Name: Rapid
-  Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-  Author: BootstrapMade.com
-  License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+#wrapper {
+  min-width: 64em; margin: 0 auto;
+  width: 100%;
+}
+
 body {
   background: #fff;
   color: #444;
   font-family: "Open Sans", sans-serif;
-  /*min-width: 1280px;*/
-
 }
 
 a {
@@ -41,12 +38,241 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: Roboto, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
   font-weight: 400;
   margin: 0 0 10px 0;
   padding: 0;
 }
 
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+#header {
+  height: 100px;
+  padding: 33px 30px 0 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  border: .5px solid #1bb1dc;
+  border-style: solid;
+  border-color: #1bb1dc;
+  background-color: #F6F6F6;
+}
+
+#header .logo h1 {
+  font-size: 32px;
+  color: black;
+  margin: 0px 0 0 0px;
+  padding: 0;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/*
+#header input[type=text], #header input[type=password] {
+
+  height: 35px;
+  padding: 0px;
+  margin: 6px ;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 3px;
+
+}*/
+
+#uname {
+  
+  width: 100%;
+}
+
+#pwd {
+  width:100%;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+nav button {
+  background: #00a9f4;
+  height: 35px;
+  width: 85px;
+  border:1px solid #076e8b;
+  border-radius: 3px;
+  color: #fff;
+  transition: 0.3s;
+  font-weight: 550;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+/* color for the logo title */
+#header .logo h1 a,
+#header .logo h1 a:hover {
+
+  color: black; /*#413e66*/
+
+  /*text-decoration: none;*/
+}
+
+.logo {
+  position: absolute;
+}
+
+
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+/* Desktop Navigation */
+
+.main-nav,
+.main-nav * {
+  
+  padding: 0;
+  list-style: none;
+  margin-top: -3px;
+  padding-left: 0px;
+}
+
+
+/* for forgot password link */
+.main-nav a {
+  
+  position: relative;
+  color: #413e66;
+  float: right;
+  margin-top: -6px;
+  padding: 0px 98px;
+  transition: 0.3s;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.main-nav a:hover {
+  color: #1bb1dc;
+  text-decoration: none;
+}
+/*--------------------------------------------------------------
+# Intro Section
+--------------------------------------------------------------*/
+
+/* This controls the form */
+.form-inline .form-control {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    vertical-align: middle;
+}
+
+.form {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+#main {
+  /*color: #535074;*/
+  color: black;
+  width: 100%;
+  height: 85vh;
+  position: relative;
+  background: #f5f8fd url("../images/intro-bg.jpg") center top no-repeat;
+
+}
+
+
+
+#main input#username, #main input[type=password], #main input[type=email]{
+  
+  margin: 6px 0;
+  box-sizing: border-box;
+}
+
+#main input#lastname {
+  width: 85.5%;
+}
+
+#main input#name {
+  margin-right: 12px;
+  width: 43.5%;
+}
+
+#main button {
+  margin-top: 60px;
+  margin-left: 20px;
+  height: 40px;
+  width: 40%;
+  border:1px solid #076e8b; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:18px;font-family:arial, helvetica, sans-serif; padding: 5px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+  background-color: #0a98c0; background-image: -webkit-gradient(linear, left top, left bottom, from(#00a9f4), to(#1BB1DC));
+  background-image: -webkit-linear-gradient(top, #00a9f4, #1BB1DC);
+  background-image: -moz-linear-gradient(top, #00a9f4, #1BB1DC);
+  background-image: -ms-linear-gradient(top, #00a9f4, #1BB1DC);
+  background-image: -o-linear-gradient(top, #00a9f4, #1BB1DC);
+  background-image: linear-gradient(to bottom, #00a9f4, #1BB1DC);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#00a9f4, endColorstr=#00a9f4);
+  transition: 0.3s;
+}
+
+#main p {
+  margin-top: -5px;
+  font-weight: 1;
+}
+
+.msg {
+  margin: 4px 0px 0 0;
+  font-weight: 50;
+  font-size: 11px;
+  padding-right: 10px;
+}
+
+#leftside {
+  margin-top: 50px;
+  margin-right: -33px; /* This is a problem */
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+#footer {
+  padding: 0px 0 20px 0;
+  font-size: 14px;
+  background: #fff;
+  border: .5px solid #1bb1dc;
+  border-style: solid;
+  /*position: relative;*/
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 30px;
+  color: #535074;
+  font-size: 15px;
+}
+
+#footer .credits {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 4px;
+  color: #8582a8;
+}
+
+#footer .credits a {
+  color: #1bb1dc;
+}
+
+#footer .credits a:hover {
+  color: #0a98c0;
+}
 
 
 /*--------------------------------------------------------------
@@ -79,258 +305,3 @@ h6 {
   border-left: 0;
 }*/
 
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-
-#header {
-  height: 95px;
-  padding: 25px 0;
-  position: relative;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 997;
-  background-color: #fff;
-  border: .5px solid #1bb1dc;
-  border-style: solid;
-  border-color: #1bb1dc;
-
-}
-
-#header input[type=text], input[type=password] {
-  width: 38%;
-  padding: 1px;
-  margin: 20px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-nav button {
-  background: #1bb1dc;
-  height: 28px;
-  width: 16%;
-  border: 0;
-  border-radius: 3px;
-  padding: 12px 30px;
-  color: #fff;
-  transition: 0.3s;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-#header .logo h1 {
-  font-size: 32px;
-  margin: 12px;
-  padding: 0;
-  line-height: 1;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-#header .logo h1 a,
-#header .logo h1 a:hover {
-
-  color: #413e66;
-  /*text-decoration: none;*/
-}
-
-.main-pages {
-  margin-top: 60px;
-}
-
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-
-/* Desktop Navigation */
-
-.main-nav,
-.main-nav * {
-  
-  padding: 0;
-  list-style: none;
-  margin-top: -3px;
-}
-
-
-/* for forgot password link */
-.main-nav a {
-  display: block;
-  position: relative;
-  color: #413e66;
-  float: right;
-  margin-top: -15px;
-  padding: 0px 103px;
-  transition: 0.3s;
-  font-size: 12px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
-}
-
-.main-nav a:hover,
-.main-nav .active > a,
-.main-nav li:hover > a {
-  color: #1bb1dc;
-  text-decoration: none;
-}
-
-/*--------------------------------------------------------------
-# Intro Section
---------------------------------------------------------------*/
-
-/* This controls the form */
-.form-inline .form-control {
-    display: inline-block;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    vertical-align: middle;
-}
-
-.form-inline .form-group { margin-right:20px;}
-
-#intro {
-  
-  color: #535074;
-  width: 100%;
-  height: 85vh;
-  position: relative;
-  background: #f5f8fd url("../img/intro-bg.jpg") center top no-repeat;
-  background-size: cover;
-}
-
-.form {
-  margin-top: -50px;
-}
-
-
-#intro input[type=text], #intro input[type=password], #intro input[type=email]{
-  padding: 3px;
-  margin: 6px 0px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-
-}
-
-#intro button {
-
-  margin-top: 60px;
-  margin-right: 80px;
-  height: 40px;
-  width: 35%;
-  border:1px solid #076e8b; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:18px;font-family:arial, helvetica, sans-serif; padding: 5px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-  background-color: #0a98c0; background-image: -webkit-gradient(linear, left top, left bottom, from(#0a98c0), to(#1BB1DC));
-  background-image: -webkit-linear-gradient(top, #0a98c0, #1BB1DC);
-  background-image: -moz-linear-gradient(top, #0a98c0, #1BB1DC);
-  background-image: -ms-linear-gradient(top, #0a98c0, #1BB1DC);
-  background-image: -o-linear-gradient(top, #0a98c0, #1BB1DC);
-  background-image: linear-gradient(to bottom, #0a98c0, #1BB1DC);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#0a98c0, endColorstr=#1BB1DC);
-}
-
-#intro p {
-  margin-top: -5px;
-  font-weight: 1;
-}
-
-.msg {
-  margin: 4px 0px 0 0;
-  font-weight: 50;
-  font-size: 12px;
-  padding-right: 100px;
-}
-
-
-/*--------------------------------------------------------------
-# Sections
---------------------------------------------------------------*/
-
-/* Sections Header
---------------------------------*/
-
-.section-header h3 {
-  font-size: 36px;
-  color: #413e66;
-  text-align: center;
-  font-weight: 700;
-  position: relative;
-  font-family: "Montserrat", sans-serif;
-}
-
-.section-header p {
-  text-align: center;
-  margin: auto;
-  font-size: 15px;
-  padding-bottom: 60px;
-  color: #535074;
-  width: 50%;
-}
-
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
-
-#footer {
-  padding: 0 0 20px 0;
-  font-size: 14px;
-  background: #fff;
-  border: .5px solid #1bb1dc;
-  border-style: solid;
-  border-color: #1bb1dc;
-}
-
-#footer .footer-top {
-  padding: 60px 0 30px 0;
-  background: #f5f8fd;
-}
-
-#footer .footer-top .footer-info {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-info h3 {
-  font-size: 34px;
-  margin: 0 0 20px 0;
-  padding: 2px 0 2px 0;
-  line-height: 1;
-  font-family: "Montserrat", sans-serif;
-  color: #413e66;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-#footer .footer-top .footer-info p {
-  font-size: 13px;
-  line-height: 24px;
-  margin-bottom: 0;
-  font-family: "Montserrat", sans-serif;
-  color: #535074;
-}
-
-
-#footer .copyright {
-  text-align: center;
-  padding-top: 30px;
-  color: #535074;
-  font-size: 15px;
-}
-
-#footer .credits {
-  text-align: center;
-  font-size: 14px;
-  padding-top: 4px;
-  color: #8582a8;
-}
-
-#footer .credits a {
-  color: #1bb1dc;
-}
-
-#footer .credits a:hover {
-  color: #0a98c0;
-}
