@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
   <meta charset="utf-8">
   <title>Contact Manager</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
   <meta content="" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="images/favicon.png" rel="icon">
+  <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
@@ -21,21 +22,11 @@
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
 </head>
-
-<body>
-<!--  <div style="min-width: 960px; margin: 0 auto;">   -->
-
-  <!--==========================
-  Header
-  ============================-->
-
-  <header id="header">
 
 <!-- Thinking about using this
 
@@ -49,121 +40,124 @@
         </div>
       </div>
     </div>
+      <span class="psw"><a href="#">Forgot Password?</a></span>
   -->
 
-    <div class="container">
+<body>
+<div id="wrapper">
+
+  <!--==========================
+  Header
+  ============================-->
+
+
+  <header id="header">
+
+    <div class="container"> 
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="#intro" class="scrollto"><span>Contact Manager</span></a></h1>
-
+        <h1>Contact Manager</h1>
       </div>
 
-      <nav class="main-nav float-right d-none d-lg-block">
-        <form action="">
-          <div class="container">
+      <nav class="main-nav float-right">
         
-          <div class="d-flex flex-column">
-            <!-- This is bad code but it works -->
-            <div for="uname"><strong></div>
-            <input type="text" placeholder="  Username" name="uname" required>
-            
-            
-            <label for="psw"></label>
-            <input type="password" placeholder="  Password" name="psw" required>
-        
-            <button type="submit">Login</button>
+        <form class="form-inline" action="">
+          
+          <div class="form-group">
+            <input type="text" class="form-control" name="uname" id="uname" placeholder="  Username">
           </div>
+          
+          <div class="form-group">
+            <input type="password" class="form-control" name="pwd" id="pwd" placeholder="  Password">
+          </div>
+
+          <button type="submit">Login</button>
         
         </form>
-       <span class="psw"><a href="#">Forgot Password?</a></span>
+        <div class="forgot"><a href="#">Forgot Password?</a></span>
       </nav>
-      <!-- .main-nav -->
-       
-    </div>
+    
+    </div> <!-- .container -->
+
   </header><!-- #header -->
 
+
+      
   <!--==========================
     Intro Section
   ============================-->
   
-  <section id="intro" class="clearfix">
-
+  <section id="main" >
     <div class="container d-flex h-100">
-      
-      <div class="row justify-content-center align-self-center">
-        
-        <div class="col-md-6 order-md-last order-first">
-         
-          <a href="./contact.html">Link for page that needs table</a>
-       <h3>Some text for substance. We can delete all of this.</h3>
-       <br>
-        
-          <h5><span class="fa fa-user-plus fa-fw" style="color: green;"></span> Add Contacts</h5>
-          <h6>Change colors/font/background. Figure out resize property</h6>
-          <br>
-          <h5><span class="fa fa-search fa-fw" style="color: #ffb774;;"></span> Search Contacts</h5>
-          <h6>Need to add jquery for incorrect login/registration. Figure out how to link buttons.</h6>          
-          <br>
-          <h5><span class="fa fa-user-times fa-fw" style="color: red;"></span> Delete Contacts</h5>
-          <h6>Need to add re-enter email and password with jquery/js</h6> 
+      <div class="row justify-content-left ">
+        <div class="col-md-7 order-md-last "> <!--order-first-->
+          <div id = "leftside">
+            <a href="./contact.html">Link for page that needs table</a>
+            <h3>Some text for substance. </h3>
+            <br>
+            <h5><span class="fa fa-user-plus fa-fw" style="color: #00a9f4;"></span> <strong>Add</strong> Contacts</h5>
+            <h6>Change colors/font/background. Figure out resize property</h6>
+            <br>
+            <h5><span class="fa fa-search fa-fw" style="color: #00a9f4;"></span> <strong>Search</strong> Contacts</h5>
+            <h6>Need to add jquery for incorrect login/registration. Figure out how to link buttons.</h6>          
+            <br>
+            <h5><span class="fa fa-user-times fa-fw" style="color: #00a9f4;"></span> <strong>Delete</strong> Contacts</h5>
+            <h6>Need to add re-enter email and password with jquery/js</h6> 
             <!--<h2>Rapid Solutions<br>for Your <span>Business!</span></h2>-->
-
+          </div>
         </div>
+      </div><!--row justify-->
 
 
         
-        <div class="col-md-6 order-md-last order-first">
+      <div class="col-md-3 order-md-last"> <!-- order-first -->
+        <div class="row justify-content-right ">
           <div class="form">
-    
-              <h2><strong>Sign Up</strong></h2>
-              <p>Some text about signing up.</p>
-              <form action="" method="post" role="form" class="contactForm">
-                
-
-                <div class="form-inline">
-                  <input type="text" name="name" class="form-control" id="name" size="21" placeholder="  First Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <!-- <div id = "rightside"> -->
+            <h2><strong>Sign Up</strong></h2>
+            <p>Some text about signing up.</p>
+            
+            <form action="" method="post" role="form" class="contactForm">
+              
+              <div class = "form-inline">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="  First Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validation"></div>
-                
-                   &nbsp;&nbsp;
+                 
+                  <div class="form-group">
+                    <input type="text" name="lastname" class="form-control" id="lastname"
+                     placeholder="  Last Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                </div> <!-- End form-group -->
+              </div> <!-- End form-inline -->
+                   
+              <div class="form-inline">
+                <input type="email" class="form-control" name="email" id="email" size="40" placeholder="  Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
 
-                  <input type="text" name="lastname" class="form-control" id="lastname"
-                  size="21" placeholder="  Last Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
-                </div>
-                </div>
+              <div class="form-inline">
+                <input type="text" class="form-control" name="username" id="username" size="40"placeholder="  Create a Username"  />
+                <div class="validation"></div>
+              </div>
 
+              <div class="form-inline">
+                <input type="password" class="form-control" name="password" id="password" size="40"placeholder="  New password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validation"></div>
+              </div>
 
-                <div class="form-inline">
-                  <input type="email" class="form-control" name="email" id="email" size="46" placeholder="  Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
+              <div class ="msg">
+                <span>  By clicking Sign Up, you agree to our <a href="">Terms</a>, <a href="">Data Policy</a> and <a href="">Cookies Policy.</a> </span>
+              </div>
 
-          
-                <div class="form-inline">
-                  <input type="text" class="form-control" name="username" id="username" size="46"placeholder="  Create a Username"  />
-                  <div class="validation"></div>
-                </div>
-
-
-                <div class="form-inline">
-                  <input type="password" class="form-control" name="password" id="password" size="46"placeholder="  New password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-
-                <div class ="msg">
-                  <span>  By clicking Sign Up, you agree to our Terms, Data Policy and Cookies Policy. </span>
-                </div>
-
-                <div class="text-center"><button type="submit" title="Sign up">Sign up!</button></div>
-              </form>
-            </div>
-        
-        </div>
-      
-      </div>
-    
-    </div>
-
+              <div class="text-center"><button type="submit" title="Sign up">Sign up!</button></div>
+            </form>
+          </div> <!-- End div form -->
+          <!-- </div>-->
+        </div> <!-- End div justify col center -->
+      </div> <!-- End div col-md-5 order-md-last order-first -->
+    </div> <!-- End container -->
   </section>
 
   <!-- #intro -->
@@ -205,12 +199,9 @@
   <script src="lib/waypoints/waypoints.min.js"></script>
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
-
+</div>
 </body>
 </html>
