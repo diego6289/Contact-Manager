@@ -2,6 +2,7 @@
 # General
 --------------------------------------------------------------*/
 
+
 #wrapper {
   min-width: 64em; margin: 0 auto;
   width: 100%;
@@ -208,7 +209,7 @@ button:hover {
 }
 
 #main button {
-  margin-top: 60px;
+  margin-top: 40px;
   margin-left: 20px;
   height: 40px;
   width: 40%;
