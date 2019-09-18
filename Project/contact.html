@@ -232,7 +232,7 @@
     $( document ).ready(function() {
 
       // var page = $.get('getData.php', function (data) {  
-      var page = $.get('./getData.php', function (data) {  
+      var page = $.get('getData.php', function (data) {  
       data = JSON.parse(data);
       $('t1').append(data["members"]);
       $('t2').append(data["users"]);
