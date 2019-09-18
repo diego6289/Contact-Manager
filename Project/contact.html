@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -16,15 +17,22 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
 
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
 
 </head>
 
 
 
 <body>
-
   <div class="body-wrapper">
     <!-- partial:partials/_sidebar.html -->
+    
+
+
     <aside class="mdc-persistent-drawer mdc-persistent-drawer--open">
       <nav class="mdc-persistent-drawer__drawer">
         <div class="mdc-persistent-drawer__toolbar-spacer">
@@ -186,28 +194,55 @@
                 <div class="table-heading px-2 px-1 border-bottom">
                   <h1 class="mdc-card__title mdc-card__title--large">Contact List</h1>
                 </div>
+                
+                <form action="" method="post">
+                  
+
                 <table class="table">
                   <thead>
                     <tr>
-                      <th class="text-left" id="tname">Name</th>
-                      <th id="temail">Email</th>
-                      <th id="tphone">Phone Number</th>
+                      <th class="text-left">Name</th>
+                      <th>Email</th>
+                      <th>Phone Number</th>
                       <th id="taddress">Address</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="text-left" headers="sitem">Tomtomtom, Johnjohn</td>
-                      <td >anexampleemail@gmail.com</td>
-                      <td>912-433-1344</td>
-                      <td>123 Fake st. Orlando, FL 32671</td>
-        
+                      <td class="text-left" id="tname">Tomtomtom, Johnjohn</td>
+                      <td id="temail">anexampleemail@gmail.com</td>
+                      <td id="tphone">912-433-1344</td>
+                      <td id="taddress">123 Fake st. Orlando, FL 32671</td>
+                    
                       
                       <td><div class="col mdc-button" data-mdc-auto-init="MDCRipple"><i class="mdi mdi-account-edit text-green"></i></div><div class="col mdc-button" data-mdc-auto-init="MDCRipple"><i class="mdi mdi-delete text-red"></i></div></td>
                     </tr>
+
                     </tbody>
+
+
+
+  <h1>Members</h1>
+  <t1></t1>
+  <hr>
+  <h1>Users</h1>
+  <t2></t2>
+  <script>
+    $( document ).ready(function() {
+
+      // var page = $.get('getData.php', function (data) {  
+      var page = $.get('./getData.php', function (data) {  
+      data = JSON.parse(data);
+      $('t1').append(data["members"]);
+      $('t2').append(data["users"]);
+    });
+    });
+</script>
+
                   </table>
+                </form>
+               
               </div>
             </div>
           </div>
