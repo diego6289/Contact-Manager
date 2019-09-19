@@ -29,7 +29,7 @@
      width: "100%",
      height: "600px",
 
-     filtering: true,
+     //filtering: true,
      inserting:true,
      editing: true,
      sorting: true,
