@@ -1,6 +1,6 @@
-<html>
-    <head>
-        <title>Inline Table Insert Update Delete in PHP using jsGrid</title>
+<html>  
+    <head>  
+        <title>Inline Table Insert Update Delete in PHP using jsGrid</title>  
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
@@ -11,19 +11,18 @@
      display:none;
   }
   </style>
-    </head>
-    <body>
-        <div class="container">
+    </head>  
+    <body>  
+        <div class="container">  
    <br />
-   <div class="table-responsive">
-    <h3 align="center">Contact Manager</h3><br />
+   <div class="table-responsive">  
+    <h3 align="center">Inline Table Insert Update Delete in PHP using jsGrid</h3><br />
     <div id="grid_table"></div>
-   </div>
+   </div>  
   </div>
-    </body>
-</html>
+    </body>  
+</html>  
 <script>
-
     $('#grid_table').jsGrid({
 
      width: "100%",
@@ -72,46 +71,34 @@
 
      fields: [
       {
-       name: "id",
+       name: "PersonID",
     type: "hidden",
     css: 'hide'
       },
       {
-       name: "First name",
-    type: "text",
-    width: 100,
+       name: "FName", 
+    type: "text", 
+    width: 150, 
     validate: "required"
       },
       {
-       name: "Last name",
-    type: "text",
-    width: 100,
+       name: "LName", 
+    type: "text", 
+    width: 150, 
     validate: "required"
       },
       {
-       name: "Phone Number",
-    type: "text",
-    width: 100,
-    validate: function(value)
-    {
-     if(value > 0)
-     {
-      return true;
-     }
-    }
+       name: "Street", 
+    type: "text", 
+    width: 150, 
       },
-     // {
-    //    name: "gender",
-    // type: "select",
-    // items: [
-    //  { Name: "", Id: '' },
-    //  { Name: "Male", Id: 'male' },
-    //  { Name: "Female", Id: 'female' }
-    // ],
-    // valueField: "Id",
-    // textField: "Name",
-    // validate: "required"
-    //   },
+      {
+       name: "City", 
+    type: "text", 
+    valueField: "PersonID", 
+    textField: "Name", 
+    validate: "required"
+      },
       {
        type: "control"
       }
