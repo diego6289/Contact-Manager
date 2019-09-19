@@ -29,7 +29,7 @@
      width: "100%",
      height: "600px",
 
-     //filtering: true,
+     filtering: true,
      inserting:true,
      editing: true,
      sorting: true,
@@ -40,13 +40,13 @@
      deleteConfirm: "Do you really want to delete data?",
 
      controller: {
-      // loadData: function(filter){
-      //  return $.ajax({
-      //   type: "GET",
-      //   url: "fetch_data.php",
-      //   data: filter
-      //  });
-      //},
+      loadData: function(filter){
+       return $.ajax({
+        type: "GET",
+        url: "fetch_data.php",
+        data: filter
+       });
+      },
       insertItem: function(item){
        return $.ajax({
         type: "POST",
