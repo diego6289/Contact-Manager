@@ -100,7 +100,7 @@
      }
     }
       },
-      {
+     // {
     //    name: "gender",
     // type: "select",
     // items: [
