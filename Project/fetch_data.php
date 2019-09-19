@@ -2,33 +2,31 @@
 
 //fetch_data.php
 
-$connect = new PDO("mysql:host=localhost;dbname=testing", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=contact_ManagerDB", "root", "diego6289");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'GET')
 {
  $data = array(
-  ':first_name'   => "%" . $_GET['first_name'] . "%",
-  ':last_name'   => "%" . $_GET['last_name'] . "%",
-  ':age'     => "%" . $_GET['age'] . "%",
-  ':gender'    => "%" . $_GET['gender'] . "%"
+  ':FName'   => "%" . $_GET['FName'] . "%",
+  ':LName'   => "%" . $_GET['LName'] . "%",
+  ':Street'     => "%" . $_GET['Street'] . "%",
+  ':City'    => "%" . $_GET['City'] . "%"
  );
-
- $query = "SELECT * FROM sample_data WHERE first_name LIKE :first_name AND last_name LIKE :last_name AND age LIKE :age AND gender LIKE :gender ORDER BY id DESC";
+ $query = "SELECT * FROM Members WHERE FName LIKE :FName AND LName LIKE :LName AND Street LIKE :Street AND City LIKE :City ORDER BY PersonID DESC";
 
  $statement = $connect->prepare($query);
  $statement->execute($data);
  $result = $statement->fetchAll();
- 
  foreach($result as $row)
  {
   $output[] = array(
-   'id'    => $row['id'],   
-   'first_name'  => $row['first_name'],
-   'last_name'   => $row['last_name'],
-   'age'    => $row['age'],
-   'gender'   => $row['gender']
+   'PersonID'    => $row['PersonID'],   
+   'FName'  => $row['FName'],
+   'LName'   => $row['LName'],
+   'Street'    => $row['Street'],
+   'City'   => $row['City']
   );
  }
  header("Content-Type: application/json");
@@ -38,13 +36,13 @@ if($method == 'GET')
 if($method == "POST")
 {
  $data = array(
-  ':first_name'  => $_POST['first_name'],
-  ':last_name'  => $_POST["last_name"],
-  ':age'    => $_POST["age"],
-  ':gender'   => $_POST["gender"]
+  ':FName'  => $_POST['FName'],
+  ':LName'  => $_POST["LName"],
+  ':Street'    => $_POST["Street"],
+  ':City'   => $_POST["City"]
  );
 
- $query = "INSERT INTO sample_data (first_name, last_name, age, gender) VALUES (:first_name, :last_name, :age, :gender)";
+ $query = "INSERT INTO Members (FName, LName, Street, City) VALUES (:FName, :LName, :Street, :City)";
  $statement = $connect->prepare($query);
  $statement->execute($data);
 }
@@ -53,19 +51,19 @@ if($method == 'PUT')
 {
  parse_str(file_get_contents("php://input"), $_PUT);
  $data = array(
-  ':id'   => $_PUT['id'],
-  ':first_name' => $_PUT['first_name'],
-  ':last_name' => $_PUT['last_name'],
-  ':age'   => $_PUT['age'],
-  ':gender'  => $_PUT['gender']
+  ':PersonID'   => $_PUT['PersonID'],
+  ':FName' => $_PUT['FName'],
+  ':LName' => $_PUT['LName'],
+  ':Street'   => $_PUT['Street'],
+  ':City'  => $_PUT['City']
  );
  $query = "
- UPDATE sample_data 
- SET first_name = :first_name, 
- last_name = :last_name, 
- age = :age, 
- gender = :gender 
- WHERE id = :id
+ UPDATE Members 
+ SET FName = :FName, 
+ LName = :LName, 
+ Street = :Street, 
+ City = :City
+ WHERE PersonID = :PersonID
  ";
  $statement = $connect->prepare($query);
  $statement->execute($data);
@@ -74,7 +72,7 @@ if($method == 'PUT')
 if($method == "DELETE")
 {
  parse_str(file_get_contents("php://input"), $_DELETE);
- $query = "DELETE FROM sample_data WHERE id = '".$_DELETE["id"]."'";
+ $query = "DELETE FROM Members WHERE PersonID = '".$_DELETE["PersonID"]."'";
  $statement = $connect->prepare($query);
  $statement->execute();
 }
