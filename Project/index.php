@@ -1,6 +1,6 @@
-<html>  
-    <head>  
-        <title>Inline Table Insert Update Delete in PHP using jsGrid</title>  
+<html>
+    <head>
+        <title>Inline Table Insert Update Delete in PHP using jsGrid</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
@@ -11,19 +11,19 @@
      display:none;
   }
   </style>
-    </head>  
-    <body>  
-        <div class="container">  
+    </head>
+    <body>
+        <div class="container">
    <br />
-   <div class="table-responsive">  
-    <h3 align="center">Inline Table Insert Update Delete in PHP using jsGrid</h3><br />
+   <div class="table-responsive">
+    <h3 align="center">Contact Manager</h3><br />
     <div id="grid_table"></div>
-   </div>  
+   </div>
   </div>
-    </body>  
-</html>  
+    </body>
+</html>
 <script>
- 
+
     $('#grid_table').jsGrid({
 
      width: "100%",
@@ -77,21 +77,21 @@
     css: 'hide'
       },
       {
-       name: "first_name", 
-    type: "text", 
-    width: 150, 
+       name: "First name",
+    type: "text",
+    width: 100,
     validate: "required"
       },
       {
-       name: "last_name", 
-    type: "text", 
-    width: 150, 
+       name: "Last name",
+    type: "text",
+    width: 100,
     validate: "required"
       },
       {
-       name: "age", 
-    type: "text", 
-    width: 50, 
+       name: "Phone Number",
+    type: "text",
+    width: 100,
     validate: function(value)
     {
      if(value > 0)
@@ -101,17 +101,17 @@
     }
       },
       {
-       name: "gender", 
-    type: "select", 
-    items: [
-     { Name: "", Id: '' },
-     { Name: "Male", Id: 'male' },
-     { Name: "Female", Id: 'female' }
-    ], 
-    valueField: "Id", 
-    textField: "Name", 
-    validate: "required"
-      },
+    //    name: "gender",
+    // type: "select",
+    // items: [
+    //  { Name: "", Id: '' },
+    //  { Name: "Male", Id: 'male' },
+    //  { Name: "Female", Id: 'female' }
+    // ],
+    // valueField: "Id",
+    // textField: "Name",
+    // validate: "required"
+    //   },
       {
        type: "control"
       }
