@@ -3,8 +3,7 @@
  * (c) 2016 Artem Tabalin
  * Licensed under MIT (https://github.com/tabalinas/jsgrid/blob/master/LICENSE)
  */
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
+
 
 @font-face {
   font-family: Poppins-Regular;
@@ -56,7 +55,6 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 
-/*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
 	font-size: 14px;
@@ -78,7 +76,6 @@ a:hover {
   color: #d33f8d;
 }
 
-/*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
 	font-family: Raleway-Bold
 	margin: 0px;
@@ -92,7 +89,7 @@ p {
 	margin: 0px;
 }
 
-/*---------------------------------------------*/
+]
 input 
 {
 	outline: none;
@@ -192,16 +189,12 @@ textarea:-ms-input-placeholder { color: #acacac; }
 	height: 100%;
 	top: 0;
 	left: 0;
-  	background: #0250c5;
-  	background: -webkit-linear-gradient(bottom, #0250c5, #d43f8d);
-  	background: -o-linear-gradient(bottom, #0250c5, #d43f8d);
- 	background: -moz-linear-gradient(bottom, #0250c5, #d43f8d);
-	background: linear-gradient(bottom, #0250c5, #d43f8d);
+  	background: #7ee6ff;
+    background: -webkit-linear-gradient(bottom, #0250c5, #7ee6ff);
+    background: -o-linear-gradient(bottom, #0250c5, #7ef9ff);
+    background: -moz-linear-gradient(bottom, #0250c5, #7ef9ff);
+    background: linear-gradient(bottom, #0250c5, #7ef9ff);
 }
-
-/*------------------------------------------------------------------
-[ Button ]*/
-
 
 .login100-form-btn {
   font-family: Raleway-Bold;
@@ -232,10 +225,6 @@ textarea:-ms-input-placeholder { color: #acacac; }
 .login100-form-btn:hover {
   background: #333333;
 }
-
-
-
-
 
 
 .jsgrid-edit-row > .jsgrid-cell,.jsgrid-filter-row > .jsgrid-cell,.jsgrid-grid-body,
