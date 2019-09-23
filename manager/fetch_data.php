@@ -6,15 +6,17 @@ $connect = new PDO("mysql:host=localhost;dbname=contact_ManagerDB", "root", "die
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if($method == 'GET')
+if ($method == 'GET')
 {
  $data = array(
   ':FName'   => "%" . $_GET['FName'] . "%",
   ':LName'   => "%" . $_GET['LName'] . "%",
-  ':Street'     => "%" . $_GET['Street'] . "%",
+  ':Email'   => "%" . $_GET['Email'] . "%",
+  ':Street'  => "%" . $_GET['Street'] . "%",
   ':City'    => "%" . $_GET['City'] . "%"
+  //':State'   => "%" . $_GET['State'] . "%"
  );
- $query = "SELECT * FROM Members WHERE FName LIKE :FName AND LName LIKE :LName AND Street LIKE :Street AND City LIKE :City ORDER BY PersonID DESC";
+ $query = "SELECT * FROM Members WHERE FName LIKE :FName AND LName LIKE :LName AND Email LIKE :Email AND Street LIKE :Street AND City LIKE :City ORDER BY PersonID DESC";
 
  $statement = $connect->prepare($query);
  $statement->execute($data);
@@ -25,8 +27,10 @@ if($method == 'GET')
    'PersonID'    => $row['PersonID'],   
    'FName'  => $row['FName'],
    'LName'   => $row['LName'],
+   'Email'  => $row['Email'],
    'Street'    => $row['Street'],
    'City'   => $row['City']
+   // 'State'  => $row['State']
   );
  }
  header("Content-Type: application/json");
@@ -38,12 +42,14 @@ if($method == "POST")
  $data = array(
   ':FName'  => $_POST['FName'],
   ':LName'  => $_POST['LName'],
-  ':Street'    => $_POST['Street'],
+  ':Email'  => $_POST['Email'],
+  ':Street' => $_POST['Street'],
   ':City'   => $_POST['City']
+  //':State'  => $_POST['State']
  );
 
 // Figure out how to keep count of person id values.         
- $query = "INSERT INTO Members (PersonID, FName, LName, Street, City) VALUES (50,:FName, :LName, :Street, :City)";
+ $query = "INSERT INTO Members (PersonID, FName, LName, Email, Street, City) VALUES (71,:FName, :LName, :Email, :Street, :City)";
  $statement = $connect->prepare($query);
  $statement->execute($data);
 }
@@ -55,6 +61,7 @@ if($method == 'PUT')
   ':PersonID'   => $_PUT['PersonID'],
   ':FName' => $_PUT['FName'],
   ':LName' => $_PUT['LName'],
+  ':Email' => $_PUT['Email'],
   ':Street'   => $_PUT['Street'],
   ':City'  => $_PUT['City']
  );
@@ -62,6 +69,7 @@ if($method == 'PUT')
  UPDATE Members 
  SET FName = :FName, 
  LName = :LName, 
+ Email = :Email,
  Street = :Street, 
  City = :City
  WHERE PersonID = :PersonID
