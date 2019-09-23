@@ -1,90 +1,143 @@
 <?php
-
-//fetch_data.php
-
-$connect = new PDO("mysql:host=localhost;dbname=contact_ManagerDB", "root", "diego6289");
-
-$method = $_SERVER['REQUEST_METHOD'];
-
-if ($method == 'GET')
-{
- $data = array(
-  ':FName'   => "%" . $_GET['FName'] . "%",
-  ':LName'   => "%" . $_GET['LName'] . "%",
-  ':Email'   => "%" . $_GET['Email'] . "%",
-  ':Street'  => "%" . $_GET['Street'] . "%",
-  ':City'    => "%" . $_GET['City'] . "%"
-  //':State'   => "%" . $_GET['State'] . "%"
- );
- $query = "SELECT * FROM Members WHERE FName LIKE :FName AND LName LIKE :LName AND Email LIKE :Email AND Street LIKE :Street AND City LIKE :City ORDER BY PersonID DESC";
-
- $statement = $connect->prepare($query);
- $statement->execute($data);
- $result = $statement->fetchAll();
- foreach($result as $row)
- {
-  $output[] = array(
-   'PersonID'    => $row['PersonID'],   
-   'FName'  => $row['FName'],
-   'LName'   => $row['LName'],
-   'Email'  => $row['Email'],
-   'Street'    => $row['Street'],
-   'City'   => $row['City']
-   // 'State'  => $row['State']
-  );
- }
- header("Content-Type: application/json");
- echo json_encode($output);
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+  header('Location: index.html');
+  exit();
 }
-
-if($method == "POST")
-{
- $data = array(
-  ':FName'  => $_POST['FName'],
-  ':LName'  => $_POST['LName'],
-  ':Email'  => $_POST['Email'],
-  ':Street' => $_POST['Street'],
-  ':City'   => $_POST['City']
-  //':State'  => $_POST['State']
- );
-
-// Figure out how to keep count of person id values.         
- $query = "INSERT INTO Members (PersonID, FName, LName, Email, Street, City) VALUES (71,:FName, :LName, :Email, :Street, :City)";
- $statement = $connect->prepare($query);
- $statement->execute($data);
-}
-
-//
-if($method == 'PUT')
-{
- parse_str(file_get_contents("php://input"), $_PUT);
- $data = array(
-  ':PersonID'   => $_PUT['PersonID'],
-  ':FName' => $_PUT['FName'],
-  ':LName' => $_PUT['LName'],
-  ':Email' => $_PUT['Email'],
-  ':Street'   => $_PUT['Street'],
-  ':City'  => $_PUT['City']
- );
- $query = "
- UPDATE Members 
- SET FName = :FName, 
- LName = :LName, 
- Email = :Email,
- Street = :Street, 
- City = :City
- WHERE PersonID = :PersonID
- ";
- $statement = $connect->prepare($query);
- $statement->execute($data);
-}
-
-if($method == "DELETE")
-{
- parse_str(file_get_contents("php://input"), $_DELETE);
- $query = "DELETE FROM Members WHERE PersonID = '".$_DELETE["PersonID"]."'";
- $statement = $connect->prepare($query);
- $statement->execute();
-}
-
 ?>
+
+<html>  
+  <head>  
+    <title>Contact Manager</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/grid_theme.css" rel="stylesheet">
+    <script src="js/grid.js"></script>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+
+      
+    <style>
+      .hide
+      {
+        display:none;
+      }
+    </style>
+  </head>  
+    
+  <body>  
+    
+    <header id="header">
+      <a href="logout.php"><i class="logout"></i>Logout</a>
+      <div class="logo">
+        
+        <h1>Contact Manager</h1>
+
+      </div> 
+
+    </header>
+    
+
+    <div class="container">  
+      <br />
+      <div class="table-responsive">  
+        <h1 align="center"><?=$_SESSION['name']?>'s Contacts</h1><br/>
+        <div id="grid_table"></div>
+      </div>  
+    </div>
+  </body>  
+</html>  
+
+<script>
+    $('#grid_table').jsGrid({
+
+     width: "100%",
+     height: "600px",
+     filtering: true,
+     inserting:true,
+     editing: true,
+     sorting: true,
+     paging: true,
+     autoload: true,
+     pageSize: 10,
+     pageButtonCount: 5,
+     deleteConfirm: "Do you really want to delete data?",
+
+     controller: {
+      loadData: function(filter){
+       return $.ajax({
+        type: "GET",
+        url: "fetch_data.php",
+        data: filter
+       });
+      },
+      insertItem: function(item){
+       return $.ajax({
+        type: "POST",
+        url: "fetch_data.php",
+        data: item
+       });
+      },
+      updateItem: function(item){
+       return $.ajax({
+        type: "PUT",
+        url: "fetch_data.php",
+        data: item
+       });
+      },
+      deleteItem: function(item){
+       return $.ajax({
+        type: "DELETE",
+        url: "fetch_data.php",
+        data: item
+       });
+      },
+     },
+
+     fields: [
+      {
+       name: "PersonID",
+    type: "hidden",
+    css: 'hide'
+      },
+      {
+       name: "FName", 
+    type: "text", 
+    width: 100, 
+    validate: "required"
+      },
+      {
+       name: "LName", 
+    type: "text", 
+    width: 100, 
+    validate: "required"
+      },
+      {
+       name: "Email", 
+    type: "text", 
+    width: 150, 
+      },
+      {
+       name: "Street", 
+    type: "text", 
+    width: 100, 
+      },
+      {
+       name: "City", 
+    type: "text", 
+    valueField: "PersonID", 
+    textField: "Name", 
+    validate: "required"
+      },
+      {
+       type: "control"
+      }
+     ]
+
+    });
+
+</script>
