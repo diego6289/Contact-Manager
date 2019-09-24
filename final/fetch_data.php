@@ -1,19 +1,18 @@
 <?php
-
+//fetch_data.php
 $connect = new PDO("mysql:host=localhost;dbname=contact_ManagerDB", "root", "diego6289");
-
 $method = $_SERVER['REQUEST_METHOD'];
-
 if ($method == 'GET')
 {
  $data = array(
   ':FName'   => "%" . $_GET['FName'] . "%",
   ':LName'   => "%" . $_GET['LName'] . "%",
   ':Email'   => "%" . $_GET['Email'] . "%",
-  ':HPhone'    => "%" . $_GET['HPhone'] . "%"
+  ':Street'  => "%" . $_GET['Street'] . "%",
+  ':City'    => "%" . $_GET['City'] . "%"
+  //':State'   => "%" . $_GET['State'] . "%"
  );
- $query = "SELECT * FROM Members WHERE FName LIKE :FName AND LName LIKE :LName AND Email LIKE :Email AND HPhone LIKE :HPhone ORDER BY PersonID DESC";
-
+ $query = "SELECT * FROM Members WHERE FName LIKE :FName AND LName LIKE :LName AND Email LIKE :Email AND Street LIKE :Street AND City LIKE :City ORDER BY PersonID DESC";
  $statement = $connect->prepare($query);
  $statement->execute($data);
  $result = $statement->fetchAll();
@@ -24,29 +23,31 @@ if ($method == 'GET')
    'FName'  => $row['FName'],
    'LName'   => $row['LName'],
    'Email'  => $row['Email'],
-   'HPhone'   => $row['HPhone']
+   'Street'    => $row['Street'],
+   'City'   => $row['City']
+   // 'State'  => $row['State']
   );
  }
  header("Content-Type: application/json");
  echo json_encode($output);
 }
-
 if($method == "POST")
 {
- $data = array(
+    $_POST = json_decode(file_get_contents("php://input"), true);
+    
+$data = array(
   ':FName'  => $_POST['FName'],
   ':LName'  => $_POST['LName'],
   ':Email'  => $_POST['Email'],
-  ':HPhone'   => $_POST['HPhone']
+  ':Street' => $_POST['Street'],
+  ':City'   => $_POST['City']
+  //':State'  => $_POST['State']
  );
-
 // Figure out how to keep count of person id values.         
- $query = "INSERT INTO Members (PersonID, FName, LName, Email, HPhone) VALUES (71,:FName, :LName, :Email, :HPhone)";
+ $query = "INSERT INTO Members (PersonID, FName, LName, Email, Street, City) VALUES (71,:FName, :LName, :Email, :Street, :City)";
  $statement = $connect->prepare($query);
  $statement->execute($data);
 }
-
-//
 if($method == 'PUT')
 {
  parse_str(file_get_contents("php://input"), $_PUT);
@@ -55,20 +56,21 @@ if($method == 'PUT')
   ':FName' => $_PUT['FName'],
   ':LName' => $_PUT['LName'],
   ':Email' => $_PUT['Email'],
-  ':HPhone'  => $_PUT['HPhone']
+  ':Street'   => $_PUT['Street'],
+  ':City'  => $_PUT['City']
  );
  $query = "
  UPDATE Members 
  SET FName = :FName, 
  LName = :LName, 
  Email = :Email,
-HPhone = :HPhone
+ Street = :Street, 
+ City = :City
  WHERE PersonID = :PersonID
  ";
  $statement = $connect->prepare($query);
  $statement->execute($data);
 }
-
 if($method == "DELETE")
 {
  parse_str(file_get_contents("php://input"), $_DELETE);
@@ -76,5 +78,4 @@ if($method == "DELETE")
  $statement = $connect->prepare($query);
  $statement->execute();
 }
-
 ?>
