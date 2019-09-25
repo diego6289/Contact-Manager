@@ -21,7 +21,7 @@ if ($method == 'GET')
  $email = $_GET['Email'];
  $phone = $_GET['HPhone'];
  
-$query = "SELECT * FROM Members WHERE FName LIKE '%$first%' AND LName LIKE '%$last%' AND Email LIKE '%$email%' AND HPhone LIKE '%$phone%'";
+$query = "SELECT * FROM Members WHERE Members.UserID = '$UserID' AND FName LIKE '%$first%' AND LName LIKE '%$last%' AND Email LIKE '%$email%' AND HPhone LIKE '%$phone%'";
             
  $statement = $connect->prepare($query);
  $statement->execute($data);
@@ -69,6 +69,9 @@ if($method == "POST")
     //ARC Print
     echo json_encode($data);
 }
+   
+
+
 
 if($method == 'PUT')
 {
