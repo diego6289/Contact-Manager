@@ -1,6 +1,12 @@
 <?php
+
+session_start();
 $connect = new PDO("mysql:host=localhost;dbname=contact_ManagerDB", "phpmyadmin", "poosgroup");
+
+$UserID = $_SESSION['username'];
+
 $method = $_SERVER['REQUEST_METHOD'];
+
 if ($method == 'GET')
 {
  $data = array(
@@ -10,7 +16,12 @@ if ($method == 'GET')
   ':HPhone'    =>$_GET['HPhone']
  );
  
- $query = "SELECT * FROM Members JOIN accounts ON Members.UserID = accounts.UserID";
+ $first = $_GET['FName'];
+ $last = $_GET['LName'];
+ $email = $_GET['Email'];
+ $phone = $_GET['HPhone'];
+ 
+$query = "SELECT * FROM Members WHERE FName LIKE '%$first%' AND LName LIKE '%$last%' AND Email LIKE '%$email%' AND HPhone LIKE '%$phone%'";
             
  $statement = $connect->prepare($query);
  $statement->execute($data);
@@ -18,7 +29,7 @@ if ($method == 'GET')
  foreach($result as $row)
  {
   $output[] = array(
-  //'PersonID'    => $row['PersonID'],
+  'PersonID'    => $row['PersonID'],
   'FName'  => $row['FName'],
   'LName'   => $row['LName'],
   'Email'  => $row['Email'],
@@ -31,13 +42,14 @@ if ($method == 'GET')
 if($method == "POST")
 {
     $data = array(
+       //':UserID' => $_POST['UserID'],
       ':FName'  => $_POST['FName'],
       ':LName'  => $_POST['LName'],
       ':Email'  => $_POST['Email'],
       ':HPhone'   => $_POST['HPhone']
      );
      
-     $query = "INSERT INTO Members (FName, LName, Email, HPhone) VALUES (:FName, :LName, :Email, :HPhone)";
+     $query = "INSERT INTO Members (UserID, FName, LName, Email, HPhone) VALUES ('$UserID', :FName, :LName, :Email, :HPhone)";
     
     //Posts to website
     $statement = $connect->prepare($query);
@@ -46,6 +58,9 @@ if($method == "POST")
     $data = json_decode(file_get_contents('php://input'), true);
     
     //Posts to ARC
+    $query = "INSERT INTO Members (UserID, FName, LName, Email, HPhone) VALUES (:UserID, :FName, :LName, :Email, :HPhone)";
+    
+    
     $statement = $connect->prepare($query);
     $statement->execute($data);
 
@@ -54,9 +69,6 @@ if($method == "POST")
     //ARC Print
     echo json_encode($data);
 }
-   
-
-
 
 if($method == 'PUT')
 {
